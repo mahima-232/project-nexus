@@ -1,22 +1,29 @@
-document.getElementById('signup-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    var username = document.getElementById('username').value;
-    var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
-    var confirmPassword = document.getElementById('confirm-password').value;
-    var errorMessage = '';
+document.addEventListener('DOMContentLoaded', function () {
+    const loginForm = document.getElementById('loginForm');
+    const signupForm = document.getElementById('signupForm');
 
-    if (password !== confirmPassword) {
-        errorMessage = 'Passwords do not match!';
-    } else if (password.length < 6) {
-        errorMessage = 'Password must be at least 6 characters!';
+    if (loginForm) {
+        loginForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const email = loginForm.email.value;
+            const password = loginForm.password.value;
+            
+            // Here you can add the code to handle the login functionality,
+            // for example, making a POST request to your backend API.
+            console.log('Login:', email, password);
+        });
     }
 
-    if (errorMessage) {
-        document.getElementById('error-message').innerText = errorMessage;
-    } else {
-        document.getElementById('error-message').innerText = '';
-        alert('Signup successful!');
-        // Optionally, submit the form data to a server here
-    }
+    if (signupForm) {
+        signupForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const name = signupForm.name.value;
+            const email = signupForm.email.value;
+            const password = signupForm.password.value;
+            
+            // Here you can add the code to handle the signup functionality,
+            // for example, making a POST request to your backend API.
+            console.log('Signup:', name, email, password);
+        });
+    }
 });
